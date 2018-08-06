@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Leader Board</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body class="leaderboard">
+    <table id="myTable">
+        <thead>
+            <tr>
+                <th colspan="4"><h2>Leader Board</h2></th>
+            </tr>   
+            <tr>    
+                <th>Name</th>
+                <th>Moves</th>
+                <th>Minutes</th>
+                <th>Seconds</th>
+            </tr>
+        </thead>
+        <tbody id="table_body"></tbody>
+    </table>
+
+    <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyDqgq6XsUbkTFxwKMkrL2zMsKEL4JpIle8",
+            authDomain: "memory-game-27.firebaseapp.com",
+            databaseURL: "https://memory-game-27.firebaseio.com",
+            projectId: "memory-game-27",
+            storageBucket: "",
+            messagingSenderId: "380454404199"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script>
+        var rootRef = firebase.database().ref().child("MemoryGame");
+        var count = 1;
+
+        rootRef.on("child_added", snap => {
+            count++;
+            var cname = snap.child("Name").val();
+            var cmoves = snap.child("Moves").val();
+            var cmin = snap.child("Minutes").val();
+            var csec = snap.child("Seconds").val();
+
+            $("#table_body").append("<tr><td>" + cname + "</td><td>" + cmoves + "</td><td>" + cmin + "</td><td>" + csec + "</td></tr>");
+
+            sortTable();
+        });
+    </script>
+    <script>
+        function sortTable() {
+          var table, rows, switching, i, x, y, shouldSwitch;
+          table = document.getElementById("myTable");
+          switching = true;
+          /*Make a loop that will continue until
+          no switching has been done:*/
+          while (switching) {
+            //start by saying: no switching is done:
+            switching = false;
+            rows = table.getElementsByTagName("TR");
+            /*Loop through all table rows (except the
+            first, which contains table headers):*/
+            for (i = 2; i < (rows.length - 1); i++) {
+              //start by saying there should be no switching:
+              shouldSwitch = false;
+              /*Get the two elements you want to compare,
+              one from current row and one from the next:*/
+              x = rows[i].getElementsByTagName("TD")[1];
+              y = rows[i + 1].getElementsByTagName("TD")[1];
+              //check if the two rows should switch place:
+              if (Number(x.innerHTML) > Number(y.innerHTML)) {
+                //if so, mark as a switch and break the loop:
+                shouldSwitch = true;
+                break;
+              }
+            }
+            if (shouldSwitch) {
+              /*If a switch has been marked, make the switch
+              and mark that a switch has been done:*/
+              rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+              switching = true;
+            }
+          }
+        }
+    </script>
+</body>
+</html>
