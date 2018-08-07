@@ -218,3 +218,26 @@ h1 {
 }
 
 .leaderboard tr th h2 {margin:0;}
+
+.leaderboard .playAgain {margin:20px 20px; display:block; width:fit-content;}
+
+
+/*========== Media Query ==========*/
+
+@media screen and (min-width:768px) and (max-width:1024px) {
+    .name_box {width: 50vw; left:25vw;}
+}
+
+@media screen and (min-width:481px) and (max-width:767px) {
+    .name_box {width: 50vw; left:25vw;}
+    .modalContent {height:85%; margin-top: 5%; padding:20px;}
+}
+
+@media screen and (min-width:320px) and (max-width:480px) {
+    .name_box {width: 80vw; left:10vw;}
+    .score-panel {width: 100%; padding: 0 20px;}
+    .deck {width: 90%; min-height: 300px; padding: 20px;}
+    .deck .card {width: 17vw; height: 17vw; margin-bottom: 15px;}
+    .deck .card.show {font-size: 20px;}
+    .leaderboard table {width: 90%;}
+}
