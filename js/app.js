@@ -84,6 +84,20 @@ function addMove(card) {
 	if(!card.classList.contains("match")) {
 		movesCount++;
 		moves.innerText = movesCount;
+		
+	    if (movesCount > 26) {
+	      	stars.innerHTML = '<li><i class="fa fa-star"></i></li>';
+	      	starsCount = 1;
+	    } else if (movesCount > 22) {
+	      	stars.innerHTML = '<li><i class="fa fa-star"></i></li> <li><i class="fa fa-star"></i></li>';
+	      	starsCount = 2;
+	    } else if (movesCount > 18) {
+	      	stars.innerHTML = '<li><i class="fa fa-star"></i></li> <li><i class="fa fa-star"></i></li> <li><i class="fa fa-star"></i></li>';
+	      	starsCount = 3;
+	    } else if (movesCount > 14) {
+	      	stars.innerHTML = '<li><i class="fa fa-star"></i></li> <li><i class="fa fa-star"></i></li> <li><i class="fa fa-star"></i></li> <li><i class="fa fa-star"></i></li>';
+	      	starsCount = 4;
+	    }	
 	}
 }
 
