@@ -31,7 +31,7 @@ let timeStart = false;
 let cards_select = [];
 let matches = 0;
 let movesCount = moves.textContent;
-let starsCount = 3;
+let starsCount = 5;
 
 
 function newGame() {
@@ -50,9 +50,6 @@ function newGame() {
 	for(let i = 0; i < cards.length; i++) {
 		deck.insertAdjacentHTML('afterbegin', '<li class="card"><i class="fa fa-' + cards[i] +' "></i></li>');
 	}
-
-	stars.innerHTML = '<li><i class="fa fa-star"></i></li> <li><i class="fa fa-star"></i></li> <li><i class="fa fa-star"></i></li>';
-	starsCount = 3;
 }
 
 
@@ -105,12 +102,14 @@ function addMove(card) {
 function endGame() {
 	if(movesCount <= 14) {
 		starsCount = 5;
-	} else if (movesCount <= 19) {
+	} else if (movesCount <= 18) {
 		starsCount = 4;
 	} else if (movesCount <= 22) {
 		starsCount = 3;
-	} else {
+	} else if (movesCount <= 26) {
 		starsCount = 2;
+	} else {
+		starsCount = 1;
 	}
 
 	if(matches === 8) {
