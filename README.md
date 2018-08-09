@@ -8,9 +8,9 @@ https://sahilit.github.io/memory-game/
 
 ## Resources
 
--Font Awesome
--Bootstrap
--jQuery
+- Font Awesome
+- Bootstrap
+- jQuery
 
 ## License
 
