@@ -11,6 +11,7 @@ https://sahilit.github.io/memory-game/
 - Font Awesome
 - Bootstrap
 - jQuery
+- Google Fonts
 
 ## License
 
