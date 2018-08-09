@@ -1,10 +1,16 @@
 # Memory Game
 
-## Table of Contents
+## Description
 
-It is a simple game develop using Javascript.
-It has a realtime database on Firebase.
+It is a simple game develop using Javascript.<br>
+It has a realtime database on Firebase.<br>
 https://sahilit.github.io/memory-game/
+
+## Resources
+
+-Font Awesome
+-Bootstrap
+-jQuery
 
 ## License
 
