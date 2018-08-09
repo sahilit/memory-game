@@ -4,7 +4,8 @@
 
 It is a simple game develop using Javascript.<br>
 It has a realtime database on Firebase.<br>
-https://sahilit.github.io/memory-game/
+Github Link: https://sahilit.github.io/memory-game/ <br>
+Hosted Link: http://sahilsingh.ml/memory-game/ 
 
 ## Resources
 
@@ -12,6 +13,7 @@ https://sahilit.github.io/memory-game/
 - Bootstrap
 - jQuery
 - Google Fonts
+- Firebase
 
 ## License
 
