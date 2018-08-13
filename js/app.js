@@ -31,6 +31,7 @@ let timeStart = false;
 let cards_select = [];
 let matches = 0;
 let movesCount = moves.textContent;
+let movesWait = false;
 let starsCount = 5;
 
 
@@ -73,6 +74,7 @@ function cardMisMatch() {
 		cards_select[0].classList.remove("open", "show");
 		cards_select[1].classList.remove("open", "show");
 		cards_select = [];
+		movesWait = true;
 	}, 900);
 }
 
@@ -133,32 +135,34 @@ restart.addEventListener("click", function() {
 });
 
 
-deck.addEventListener("click", function(e) {
-	let card = e.target;
+if(!movesWait) {
+	deck.addEventListener("click", function(e) {
+		let card = e.target;
 
-	if(e.target !== e.currentTarget) {
-		if(!timeStart) {
-			startTimer();
-			timeStart = true;
-			timer.style.display = "inline-block";
-		}
-		if(!card.classList.contains("open")) {
-			if(cards_select.length < 2) {
-				flipCard(card);
-				cards_select.push(card);
+		if(e.target !== e.currentTarget) {
+			if(!timeStart) {
+				startTimer();
+				timeStart = true;
+				timer.style.display = "inline-block";
 			}
-			if(cards_select.length === 2) {
-				addMove(card);
-				if(cards_select[0].innerHTML === cards_select[1].innerHTML) {
-					cardMatch();
-				} else {
-					cardMisMatch();
+			if(!card.classList.contains("open")) {
+				if(cards_select.length < 2) {
+					flipCard(card);
+					cards_select.push(card);
 				}
+				if(cards_select.length === 2) {
+					addMove(card);
+					if(cards_select[0].innerHTML === cards_select[1].innerHTML) {
+						cardMatch();
+					} else {
+						cardMisMatch();
+					}
+				}
+				endGame();
 			}
-			endGame();
 		}
-	}
-});
+	});
+}
 
 
 function resetTimer() {
